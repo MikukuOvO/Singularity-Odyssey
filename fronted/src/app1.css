@@ -1,0 +1,498 @@
+/* Desktop - 1 */
+
+position: relative;
+width: 1648px;
+height: 1120px;
+
+background: #04070D;
+
+
+/* Vector 1 */
+
+position: absolute;
+width: 491.5px;
+height: 52.5px;
+left: 623px;
+top: 270px;
+
+border: 1px solid #FEFEFE;
+
+
+/* Vector 3 */
+
+position: absolute;
+width: 491.5px;
+height: 52.5px;
+left: 623px;
+top: 323.5px;
+
+border: 1px solid #FEFEFE;
+
+
+/* Vector 2 */
+
+position: absolute;
+width: 491.5px;
+height: 52.5px;
+left: 623px;
+top: 296.5px;
+
+border: 1px solid #FEFEFE;
+
+
+/* 32/Cloudy-clear at times */
+
+position: absolute;
+width: 59px;
+height: 64px;
+left: 1483px;
+top: 41px;
+
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+
+/* 32icon-grid */
+
+position: absolute;
+visibility: hidden;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+
+
+/* for edit */
+
+position: absolute;
+visibility: hidden;
+width: 51.62px;
+height: 56px;
+left: 3.69px;
+top: 4px;
+
+/* dark blue */
+background: #343348;
+
+
+/* Union */
+
+position: absolute;
+width: 51.62px;
+height: 43.5px;
+left: 3.69px;
+top: 16.5px;
+
+/* Gray 4 */
+background: #BDBDBD;
+
+
+/* Vector 24 */
+
+position: absolute;
+left: 39.68%;
+right: 27.37%;
+top: 90.62%;
+bottom: 9.38%;
+
+/* Gray 4 */
+border: 2px solid #BDBDBD;
+
+
+/* Subtract */
+
+position: absolute;
+width: 51.62px;
+height: 43.5px;
+left: 3.69px;
+top: 16.5px;
+
+/* Gray 4 */
+background: #BDBDBD;
+
+
+/* Union */
+
+position: absolute;
+width: 51.62px;
+height: 43.5px;
+left: 3.69px;
+top: 16.5px;
+
+/* Gray 3 */
+background: #828282;
+
+
+/* Subtract */
+
+position: absolute;
+width: 23.87px;
+height: 29px;
+left: 31.45px;
+top: 31px;
+
+/* Gray 3 */
+background: #828282;
+
+
+/* Ellipse 5 */
+
+box-sizing: border-box;
+
+position: absolute;
+left: 50%;
+right: 6.25%;
+top: 48.44%;
+bottom: 6.25%;
+
+/* Gray 3 */
+border: 2px solid #828282;
+
+
+/* Ellipse 4 */
+
+position: absolute;
+left: 12.28%;
+right: 34.36%;
+top: 32.13%;
+bottom: 12.61%;
+
+/* Gray 3 */
+background: #828282;
+
+
+/* Subtract */
+
+position: absolute;
+width: 37.63px;
+height: 43.5px;
+left: 3.69px;
+top: 16.5px;
+
+/* Gray 3 */
+background: #828282;
+
+
+/* Ellipse 4 */
+
+box-sizing: border-box;
+
+position: absolute;
+left: 6.25%;
+right: 28.12%;
+top: 25.78%;
+bottom: 6.25%;
+
+/* Gray 3 */
+border: 2px solid #828282;
+
+
+/* Ellipse 6 */
+
+position: absolute;
+left: 50%;
+right: 6.25%;
+top: 48.44%;
+bottom: 6.25%;
+
+/* Gray 2 */
+background: #4F4F4F;
+
+
+/* Rectangle 1 */
+
+position: absolute;
+left: 39.19%;
+right: 28.13%;
+top: 56.25%;
+bottom: 12.5%;
+
+background: #C4C4C4;
+
+
+/* Subtract */
+
+position: absolute;
+width: 26.55px;
+height: 22.61px;
+left: 21.67px;
+top: 11.58px;
+
+/* Gray 4 */
+background: #BDBDBD;
+
+
+/* Ellipse 1 */
+
+box-sizing: border-box;
+
+position: absolute;
+left: 34.38%;
+right: 18.27%;
+top: 18.09%;
+bottom: 34.56%;
+
+/* Gray 4 */
+border: 2px solid #BDBDBD;
+
+
+/* Ellipse 7 */
+
+position: absolute;
+left: 7.48%;
+right: 33.97%;
+top: 31.48%;
+bottom: 9.98%;
+
+background: #C4C4C4;
+
+
+/* Ellipse 8 */
+
+position: absolute;
+left: 51.58%;
+right: 9.94%;
+top: 51.75%;
+bottom: 9.78%;
+
+background: #C4C4C4;
+
+
+/* Union */
+
+position: absolute;
+width: 32.28px;
+height: 23.73px;
+left: 23.04px;
+top: 4px;
+
+/* Gray 4 */
+background: #BDBDBD;
+
+
+/* Vector 1 */
+
+position: absolute;
+left: 58.24%;
+right: 41.76%;
+top: 6.25%;
+bottom: 86.14%;
+
+/* Gray 4 */
+border: 2px solid #BDBDBD;
+
+
+/* Vector 13 */
+
+position: absolute;
+left: 93.75%;
+right: 6.25%;
+top: 41.76%;
+bottom: 51.22%;
+
+/* Gray 4 */
+border: 2px solid #BDBDBD;
+border-radius: 2px;
+transform: rotate(90deg);
+
+
+/* Vector 15 */
+
+position: absolute;
+left: 88.99%;
+right: 11.01%;
+top: 24.01%;
+bottom: 68.83%;
+
+/* Gray 4 */
+border: 2px solid #BDBDBD;
+border-radius: 2px;
+transform: matrix(0.47, 0.88, -0.85, 0.53, 0, 0);
+
+
+/* Vector 17 */
+
+position: absolute;
+left: 75.99%;
+right: 24.01%;
+top: 11.01%;
+bottom: 81.53%;
+
+/* Gray 4 */
+border: 2px solid #BDBDBD;
+border-radius: 2px;
+transform: matrix(0.85, 0.53, -0.47, 0.88, 0, 0);
+
+
+/* Vector 19 */
+
+position: absolute;
+left: 40.48%;
+right: 59.52%;
+top: 11.01%;
+bottom: 81.53%;
+
+/* Gray 4 */
+border: 2px solid #BDBDBD;
+border-radius: 2px;
+transform: matrix(0.85, -0.53, 0.47, 0.88, 0, 0);
+
+
+/* outline */
+
+position: absolute;
+left: 6.25%;
+right: 6.25%;
+top: 6.25%;
+bottom: 6.25%;
+
+background: #FFFFFF;
+
+
+/* TODO */
+
+position: absolute;
+width: 74px;
+height: 52px;
+left: 1501px;
+top: 1033px;
+
+font-family: 'Inknut Antiqua';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 52px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+border: 1px solid #000000;
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+
+/* 12:03 AM */
+
+position: absolute;
+width: 248px;
+height: 124px;
+left: 1341px;
+top: 101px;
+
+font-family: 'Inknut Antiqua';
+font-style: normal;
+font-weight: 700;
+font-size: 48px;
+line-height: 124px;
+/* identical to box height */
+
+color: #F3E8E8;
+
+
+
+/* image 5 */
+
+position: absolute;
+width: 271px;
+height: 535px;
+left: 0px;
+top: -14px;
+
+background: url(image.png);
+
+
+/* DÜNYA */
+
+position: absolute;
+width: 1315px;
+height: 846px;
+left: 198px;
+top: 719px;
+
+background: url(DÜNYA.png);
+
+
+/* AY */
+
+position: absolute;
+width: 67px;
+height: 67px;
+left: 355px;
+top: 606px;
+
+background: url(AY.png);
+
+
+/* mars */
+
+position: absolute;
+width: 94px;
+height: 60px;
+left: 791px;
+top: 501px;
+
+background: url(mars.png);
+
+
+/* JUPİTER */
+
+position: absolute;
+width: 79px;
+height: 59px;
+left: 1215px;
+top: 606px;
+
+background: url(JUPİTER.png);
+
+
+/* Canlendar */
+
+position: absolute;
+width: 174px;
+height: 47px;
+left: 318px;
+top: 685px;
+
+font-family: 'Abhaya Libre SemiBold';
+font-style: normal;
+font-weight: 600;
+font-size: 40px;
+line-height: 47px;
+
+color: #FFFFFF;
+
+
+
+/* Assistant */
+
+position: absolute;
+width: 152px;
+height: 45px;
+left: 762px;
+top: 575px;
+
+font-family: 'Abhaya Libre SemiBold';
+font-style: normal;
+font-weight: 600;
+font-size: 40px;
+line-height: 47px;
+
+color: #FFFFFF;
+
+
+
+/* Memo */
+
+position: absolute;
+width: 102px;
+height: 47px;
+left: 1204px;
+top: 675px;
+
+font-family: 'Abhaya Libre SemiBold';
+font-style: normal;
+font-weight: 600;
+font-size: 40px;
+line-height: 47px;
+
+color: #FFFFFF;
+

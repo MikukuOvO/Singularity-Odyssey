@@ -1,0 +1,93 @@
+body {
+  margin: 0;
+  font-family: 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif;
+  background-color: #1a1a1a;
+  color: #d4af37;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.App-header {
+  padding: 20px;
+  background-color: #222;
+  font-family: 'Georgia', serif;
+}
+
+.chat-container {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: #333;
+}
+
+.message {
+  margin: 5px;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 60%;
+  display: flex;
+}
+
+.message.user {
+  background-color: #444;
+  color: #d4af37;
+  margin-left: auto;
+  border-top-right-radius: 0;
+  border-left: 5px solid #d4af37;
+}
+
+.message.bot {
+  background-color: #444;
+  color: #d4af37;
+  margin-right: auto;
+  border-top-left-radius: 0;
+  border-left: 5px solid #d4af37;
+}
+
+.input-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #333;
+}
+
+input[type="text"] {
+  flex: 1;
+  margin-right: 10px;
+  padding: 10px;
+  background-color: #333;
+  border: 1px solid #d4af37;
+  color: #d4af37;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #d4af37;
+  color: #1a1a1a;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #e6b800;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #333;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4af37;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e6b800;
+}

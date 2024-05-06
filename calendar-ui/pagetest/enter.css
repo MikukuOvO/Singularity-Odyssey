@@ -1,0 +1,69 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    background: #000;
+    color: white;
+    font-family: 'Arial', sans-serif;
+}
+
+.space-dashboard {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-image: url('path_to_your_space_background_image');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.planets .planet {
+    position: absolute;
+}
+
+#mars {
+    /* Position and size your Mars image */
+    background-image: url('frontend/pagetest/pic/Mars.png');
+}
+
+#jupiter {
+    /* Position and size your Jupiter image */
+    background-image: url('frontend/pagetest/pic/tu.png');
+}
+
+.moon, .earth, .astronaut {
+    /* Position and size your images */
+    frontend/pagetest/pic/moon.png,
+    frontend/pagetest/pic/earth.png,
+
+}
+.moon {
+    background-image: url('frontend/pagetest/pic/moon.png');
+}
+
+.earth {
+    background-image: url('frontend/pagetest/pic/earth.png');
+    /* add more properties for positioning and size */
+}
+
+.menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.menu-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    width: 100px;
+}
+
+.time {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}

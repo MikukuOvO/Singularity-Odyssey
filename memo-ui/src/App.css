@@ -1,0 +1,108 @@
+body {
+  margin: 0;
+  font-family: 'Arial', serif; /* 默认字体 */
+  background-color: #1a1a1a; /* 深黑色背景 */
+  color: #d4af37; /* 金色文字 */
+}
+
+/* 应用的基本布局 */
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* 使用视口高度，让应用充满整个屏幕 */
+}
+
+.top-half {
+  flex: 1; /* 比例为1 */
+  padding: 20px;
+  overflow: auto; /* 如果内容过多，允许滚动 */
+  background-color: #222; /* 深灰色背景 */
+  font-family: 'Georgia', serif; /* 烫金纸风格的字体 */
+}
+
+.bottom-half {
+  flex: 2; /* 比例为2 */
+  padding: 20px;
+  overflow: auto; /* 如果内容过多，允许滚动 */
+  background-color: #333; /* 深灰色背景 */
+  font-family: 'Dancing Script', 'Zhi Mang Xing', cursive, serif; /* 基础字体设置 */
+  position: relative; /* 添加这一行 */
+}
+
+.bottom-left {
+  flex: 1; /* 减小左侧部分的 flex 值 */
+  padding: 20px;
+  overflow: auto;
+  background-color: #333;
+  font-family: 'Dancing Script', 'Zhi Mang Xing', cursive, serif;
+}
+
+.bottom-right {
+  flex: 2; /* 增加右侧部分的 flex 值 */
+  padding: 20px;
+  overflow: auto;
+  background-color: #333;
+  font-family: 'Dancing Script', 'Zhi Mang Xing', cursive, serif;
+}
+
+.english-text {
+  font-family: 'Dancing Script', cursive; /* 特定为英文设置的花体 */
+}
+
+.chinese-text {
+  font-family: 'Zhi Mang Xing', cursive; /* 特定为中文设置的花体 */
+}
+
+/* 日历和事件列表项样式 */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #444; /* 暗灰色背景，以增强对比 */
+  border-left: 5px solid #d4af37; /* 金色高亮条 */
+}
+
+li:hover {
+  background-color: #555; /* 鼠标悬停时稍微亮一点的灰色 */
+}
+
+/* 输入框和按钮样式 */
+input[type="text"], textarea, button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #333; /* 深灰色背景 */
+  border: 1px solid #d4af37; /* 金色边框 */
+  color: #d4af37; /* 金色文字 */
+}
+
+button {
+  background-color: #d4af37; /* 金色背景 */
+  cursor: pointer;
+  font-weight: bold; /* 加粗文本，增加视觉重量 */
+}
+
+button:hover {
+  background-color: #e6b800; /* 鼠标悬停时更亮的金色 */
+}
+
+/* 修饰滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #333; /* 滚动条背景 */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4af37; /* 金色滚动条 */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e6b800; /* 鼠标悬停时更亮的金色 */
+}

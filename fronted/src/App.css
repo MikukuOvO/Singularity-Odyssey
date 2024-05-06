@@ -1,0 +1,190 @@
+
+body, html {
+  height: 100%;
+  margin: 0;
+  background: black; /* 太空背景通常是黑色 */
+  color: white;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.App {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  /* background-image: url('/path/to/your/space-background.jpg'); 设置背景图片 */
+  background-image: url('../public/assets/earth.png');
+  background-color: rgba(29, 19, 19, 0.3);
+  background-repeat: no-repeat; /* 防止背景重复 */
+  background-size: 60%; /* 使背景图适应容器大小 */
+  background-position: bottom center; /* 将背景图定位在底部中央 */
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  overflow: hidden; /* 隐藏超出容器的部分 */
+}
+
+/* .feature-button {
+  position: absolute;
+  /* width: 80px;
+  height: 80px;
+  /* border-radius: 50%; */ 
+  /* background-color: rgba(255, 255, 255, 0.3); 
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  /* cursor: pointer;
+  transition: transform 0.3s;
+} */ 
+
+.feature-button:hover {
+  transform: scale(1.2); /* 放大效果 */
+}
+/* 调整Calendar功能位置-------------- */
+
+.calendar {
+  position: absolute;
+  top: 80%; /* 调整垂直居中 */
+  left: 25%; /* 调整左侧距离 */
+  transform: translate(-50%, -50%); /* 使用 transform 属性实现水平和垂直居中 */
+  display: flex;
+  flex-direction: column; /* 垂直布局 */
+  align-items: center; /* 水平居中 */
+}
+
+.calendar img {
+  width: 100px; /* 调整图片大小 */
+  height: auto;
+}
+
+.calendar p {
+  margin-top: 15px; /* 调整文字与图片之间的间距 */
+  color: white; /* 设置文字颜色 */
+  font-size: 30px; /* 调整文字大小 */
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+/* -----------------------------------*/
+
+/* 调整Assitant功能位置-------------- */
+
+.assistant {
+  position: absolute;
+  top: 55%; /* 调整垂直居中 */
+  right: 42%; /* 调整左侧距离 */
+  transform: translate(-50%, -50%); /* 使用 transform 属性实现水平和垂直居中 */
+  display: flex;
+  flex-direction: column; /* 垂直布局 */
+  align-items: center; /* 水平居中 */
+}
+
+.assistant img {
+  width: 150px; /* 调整图片大小 */
+  height: auto;
+}
+
+.assistant p {
+  margin-top: 15px; /* 调整文字与图片之间的间距 */
+  color: white; /* 设置文字颜色 */
+  font-size: 30px; /* 调整文字大小 */
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+/* -----------------------------------*/
+
+/* 调整 Memo 功能位置-------------- */
+
+.memo {
+  position: absolute;
+  top: 80%; /* 调整垂直居中 */
+  right: 15%; /* 调整左侧距离 */
+  transform: translate(-50%, -50%); /* 使用 transform 属性实现水平和垂直居中 */
+  display: flex;
+  flex-direction: column; /* 垂直布局 */
+  align-items: center; /* 水平居中 */
+}
+
+.memo img {
+  width: 120px; /* 调整图片大小 */
+  height: auto;
+}
+
+.memo p {
+  margin-top: 15px; /* 调整文字与图片之间的间距 */
+  color: white; /* 设置文字颜色 */
+  font-size: 30px; /* 调整文字大小 */
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+/* -----------------------------------*/
+
+/* astronaunt */
+
+
+
+
+.astronaut img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  width: 200px;  /* Adjust this value to make the image smaller or larger */
+  height: auto;
+}
+
+/* weather css --------------------------------- */
+.weather-wrapper {
+  position: fixed; /* 将父容器设置为固定定位，使其相对于视口定位 */
+  top: 20px; /* 调整顶部位置 */
+  right: 20px; /* 调整右侧位置 */
+  z-index: 1000; /* 设置一个较高的 z-index 值，确保天气组件位于其他内容之上 */
+}
+
+.weather-container {
+  background-color: rgba(0, 0, 0, 0.8); /* 添加背景色以增加对比度 */
+  padding: 20px; /* 添加内边距以增加天气组件的内容间距 */
+  border-radius: 10px; /* 添加边框圆角 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* 添加阴影效果 */
+  color: #fff; /* 设置文字颜色为白色 */
+  /* font-family: Arial, sans-serif;  */
+}
+
+.weather-container .icon {
+  font-size: 40px; /* 调整天气图标的大小 */
+}
+
+.weather-container .temperature {
+  font-size: 24px; /* 调整温度文字大小 */
+  margin-bottom: 10px; /* 添加底部间距 */
+}
+
+.weather-container .description {
+  font-size: 18px; /* 调整天气描述文字大小 */
+  margin-bottom: 10px; /* 添加底部间距 */
+}
+
+.weather-container .wind,
+.weather-container .humidity {
+  font-size: 14px; /* 调整风速和湿度文字大小 */
+  margin-bottom: 5px; /* 添加底部间距 */
+}
+
+.error {
+  color: #ff4d4d; /* 设置错误信息文字颜色为红色 */
+  font-size: 16px; /* 调整错误信息文字大小 */
+}
+
+.loading {
+  font-size: 16px; /* 调整加载中文字大小 */
+}
+
+/* clock css design-------------------------- */
+
+/* 时钟样式调整 */
+.clock {
+  position: absolute;
+  top: 220px;
+  right: 20px;
+  font-size: 24px;
+  color: aliceblue; /* 浅蓝色字体 */
+}
+
