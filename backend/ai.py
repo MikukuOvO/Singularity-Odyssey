@@ -33,29 +33,48 @@ def add_event(title, start, end, destination):
 # 创建ZhipuAI客户端实例
 client = ZhipuAI(api_key="8f80e67f4dfe3665b2d92f959b0467e5.CQnbYZvzG0NLGdmv")  # 使用环境变量或安全方式加载API密钥
 
+def checkifactions(content):
+    response = client.chat.completions.create(
+        model="glm-4",  # 填写需要调用的模型名称
+        messages=[
+            {"role": "system",
+             "content": "请根据用户的语言判断用户是想要进行日历操作还是想要聊天，如果是日历操作请返回0，否则请返回1"},
+            {"role": "user", "content": "今天晚上8点和同学一起吃饭"},
+            {"role": "assistant", "content": "0"},
+            {"role": "user", "content": "晚上安排一个会议"},
+            {"role": "assistant", "content": "0"},
+            {"role": "user", "content": "晚上跟小汪去KTV"},
+            {"role": "assistant", "content": "0"},
+            {"role": "user", "content": "今天天气真好"},
+            {"role": "assistant", "content": "1"},
+            {"role": "user", "content": "我好累"},
+            {"role": "assistant", "content": "1"},
+            {"role": "user", "content": "我想吃饭，你有什么推荐嘛"},
+            {"role": "assistant", "content": "1"},
+            {"role": "user", "content": content}
+        ],
+    )
+    choice = response.choices[0].message.content
+    print(choice)
+    return choice
+
+def talk(content):
+    response = client.chat.completions.create(
+        model="glm-4",  # 填写需要调用的模型名称
+        messages=[
+            {"role": "system",
+             "content": "请活泼的跟用户进行聊天"},
+            {"role": "user", "content": content}
+        ],
+    )
+
+    print(response.choices[0].message)
+    msg = response.choices[0].message.content
+    return msg
+
 # 解析用户输入的自然语言，获取事件的时间和名称
 def get_event_details_from_model(user_input):
     current_date = datetime.now().strftime('%Y-%m-%d %H:%M')
-    # response = client.chat.completions.create(
-    #     model="glm-4",  # 填写需要调用的模型名称
-    #     messages=[
-    #         {"role": "system",
-    #          "content": "你是一个日历助手的组件，你的任务是通过用户的自然语言来分析用户期望事件发生的时间，你需要按照标准格式返回时间"},
-    #         {"role": "system",
-    #          "content": "你不需要进行任何的思考，你只要返回一个日期格式即可"},
-    #         {"role": "system", "content": "如果信息不全，你需要通过用户的自然语言来解析，根据当前的日期来推测事件的日期"},
-    #         {"role": "system", "content": f"当前的日期是{current_date}"},
-    #         {"role": "system", "content": f"如果你不确定，根据你的理解给出一个结果就行，比如{current_date} 8:00~9:00"},
-    #         {"role": "system", "content": "你的返回的格式必须是 年-月-日 起始时间~结束时间"},
-    #         {"role": "user", "content": "今天晚上8点和同学一起吃饭"},
-    #         {"role": "assistant", "content": f"{current_date} 20:00~21:00"},
-    #         {"role": "user", "content": "4月25号早上9点上编译原理课程"},
-    #         {"role": "assistant", "content": "2024-4-25 9:00~10:00"},
-    #         {"role": "user", "content": "年底在老家吃饭"},
-    #         {"role": "assistant", "content": "2024-12-31 8:00~9:00"},
-    #         {"role": "user", "content": user_input}
-    #     ],
-    # )
     response = client.chat.completions.create(
         model="glm-4",  # 填写需要调用的模型名称
         messages=[
@@ -132,3 +151,10 @@ def action(content):
 
     # 添加事件到数据库
     add_event(event_name, start_time.isoformat(), end_time.isoformat(), destination)
+    return "Add Events Successfully!"
+
+def get_talk(content):
+    if checkifactions(content) == '0':
+        return action(content)
+    else:
+        return talk(content)

@@ -91,3 +91,14 @@ button:hover {
 ::-webkit-scrollbar-thumb:hover {
   background: #e6b800;
 }
+
+/* 新增的样式 */
+.location-message {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #444;
+  color: #d4af37;
+  padding: 10px;
+  border-radius: 5px;
+}

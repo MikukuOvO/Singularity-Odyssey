@@ -6,7 +6,7 @@ from datetime import datetime
 import logging
 import uuid  # 用于生成唯一ID
 import sqlite3
-from ai import action
+from ai import action, get_talk
 
 app = Flask(__name__)
 app.logger.setLevel(logging.DEBUG)  # 设置日志级别为 DEBUG
@@ -91,8 +91,9 @@ def predict():
     user_input = data['input']
 
     # 假设的预测逻辑，这里只是简单地返回输入
-    time.sleep(2)
-    prediction = f"不，你不要'{user_input}' "
+    # time.sleep(2)
+    # prediction = f"不，你不要'{user_input}' "
+    prediction = get_talk(user_input)
     return jsonify({
         'prediction': prediction
     })
@@ -107,6 +108,11 @@ def get_today_events():
     events = cur.fetchall()
     conn.close()
     return jsonify([dict(event) for event in events])
+
+@app.route('/get_ip', methods=['GET'])
+def get_ip():
+    client_ip = request.remote_addr
+    return {'ip': client_ip}
 
 if __name__ == '__main__':
     app.run(debug=True)
