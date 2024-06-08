@@ -30,9 +30,15 @@ export default defineComponent({
           interactionPlugin // needed for dateClick
         ],
         headerToolbar: {
-          left: 'prev,next today',
+          left: 'Back prev,next today',
           center: 'title',
           right: 'dayGridMonth,timeGridWeek,timeGridDay'
+        },
+        customButtons: {
+          Back:{
+            text: 'Back',
+            click: this.handleBack
+          }
         },
         initialView: 'dayGridMonth',
         initialEvents: [], // 初始化为空，将通过API获取
@@ -152,6 +158,9 @@ export default defineComponent({
       .catch(error => {
         console.error('There was an error when interact:', error);
       });
+    },
+    handleBack(){
+      window.location.href = 'http://192.168.0.136:3000';
     }
   }
 })

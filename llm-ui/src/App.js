@@ -13,13 +13,17 @@ function App() {
   }, []);
 
   const handlePredict = async () => {
+    setMessages([...messages, { text: input, type: 'user' }]);
+    setInput('');
     setIsLoading(true);
     const result = await fetchPrediction(input);
     setMessages([...messages, { text: input, type: 'user' }, { text: result, type: 'bot' }]);
-    setInput('');
     setIsLoading(false);
   };
 
+  const handleBack = async () => {
+    window.location.href = 'http://192.168.0.136:3000';
+  };
   const handleLocation = async () => {
     try {
       setIsLoading(true);
@@ -44,6 +48,9 @@ function App() {
       <header className="App-header">
         <h1>LLM Assistant</h1>
       </header>
+      <div className="Back-button">
+      <button onClick={handleBack} >Back</button>
+      </div>
       <div className="chat-container">
         {messages.map((msg, index) => (
           <div key={index} className={`message ${msg.type}`}>
@@ -112,7 +119,7 @@ async function fetchLocation() {
     // 获取用户的 IP 地址
     const ipData = await fetchIP();
     // const userIP = ipData.ip;
-    const userIP = '114.247.50.2';
+    const userIP = '125.220.159.146'; //114.247.50.2
 
     // 使用获取到的用户 IP 地址调用高德地图 API
     const userKey = '478235d991172967692a6608a539bac5';

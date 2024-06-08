@@ -1,0 +1,55 @@
+.memo-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  
+  .memo-sidebar {
+    width: 25%;
+    background-color: #f4f4f4;
+    padding: 10px;
+  }
+  
+  .memo-search {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .add-memo-btn {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .memo-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .memo-list li {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .memo-list li.selected {
+    background-color: #ddd;
+  }
+  
+  .memo-details {
+    width: 45%;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .calendar-section {
+    width: 25%;
+    background-color: #f4f4f4;
+    padding: 10px;
+  }
+  
+  .calendar-view {
+    margin-bottom: 20px;
+  }
+  

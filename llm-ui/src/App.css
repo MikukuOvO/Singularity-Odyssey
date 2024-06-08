@@ -17,6 +17,12 @@ body {
   font-family: 'Georgia', serif;
 }
 
+.Back-button {
+  padding: 20px;
+  background-color: #222;
+  font-family: 'Georgia', serif;
+}
+
 .chat-container {
   flex: 1;
   padding: 20px;
