@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 function Assistant() {
     return (
-        <Link to="http://localhost:3003/llm">
+        <Link to="http://192.168.0.136:3003/llm">
             <div className="assistant">
                 <img src="/assets/Assistant.png" alt="Assistant" />
                 <p color='white'>Assistant</p>
