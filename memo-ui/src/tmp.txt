@@ -8,13 +8,12 @@ const MarkdownEditorComponent = ({ memos, setMemos, selectedMemo, setSelectedMem
   const [newMemoTitle, setNewMemoTitle] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false); // 管理对话框的状态
   const [showAlert, setShowAlert] = useState(false); // 新增的状态来管理弹窗提醒
-  const [isAddingNewMemo, setIsAddingNewMemo] = useState(false); // 跟踪是否正在添加新 memo
 
   useEffect(() => {
     if (selectedMemo) {
-      setContent(selectedMemo.content || '');
-      setTags(Array.isArray(selectedMemo.tags) ? selectedMemo.tags.join(', ') : '');
-      setTitle(selectedMemo.title || '');
+      setContent(selectedMemo.content);
+      setTags(selectedMemo.tags.join(', '));
+      setTitle(selectedMemo.title);
     }
   }, [selectedMemo]);
 
@@ -77,7 +76,6 @@ const MarkdownEditorComponent = ({ memos, setMemos, selectedMemo, setSelectedMem
           setMemos([...memos, result]);
           setNewMemoTitle('');
           setSelectedMemo(result);
-          setIsAddingNewMemo(false); // 隐藏新 memo 输入框和 Add 按钮
           console.log('Memo added successfully:', result);
         } else {
           console.error('Failed to add memo:', response.statusText);
@@ -122,10 +120,6 @@ const MarkdownEditorComponent = ({ memos, setMemos, selectedMemo, setSelectedMem
     setIsModalOpen(!isModalOpen); // 切换对话框的显示状态
   };
 
-  const startAddingMemo = () => {
-    setIsAddingNewMemo(true); // 开始添加新 memo，显示输入框和 Add 按钮
-  };
-
   return (
     <div>
       {showAlert && (
@@ -135,22 +129,15 @@ const MarkdownEditorComponent = ({ memos, setMemos, selectedMemo, setSelectedMem
       )}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <h2>Memo Editor</h2>
-        <button onClick={toggleModal} style={{ padding: '5px 10px', marginRight: '10px', width: '150px' }}>Previous Memo</button>
+        <button onClick={toggleModal} style={{ padding: '5px 10px', marginRight: '10px' }}>More...</button>
       </div>
-      {!isAddingNewMemo && (
-        <button onClick={startAddingMemo}>Add New Memo</button>
-      )}
-      {isAddingNewMemo && (
-        <>
-          <input
-            type="text"
-            value={newMemoTitle}
-            onChange={(e) => setNewMemoTitle(e.target.value)}
-            placeholder="New memo title..."
-          />
-          <button onClick={handleAddMemo}>Add</button>
-        </>
-      )}
+      <input
+        type="text"
+        value={newMemoTitle}
+        onChange={(e) => setNewMemoTitle(e.target.value)}
+        placeholder="New memo title..."
+      />
+      <button onClick={handleAddMemo}>Add</button>
       <ul>
         {memos.slice(0, 5).map((memo) => (
           <li key={memo.id}>

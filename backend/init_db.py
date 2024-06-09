@@ -18,6 +18,14 @@ def init_db(reset=False):
             destination TEXT
         )
     ''')
+    c.execute('''
+        CREATE TABLE memos (
+            id TEXT PRIMARY KEY,
+            title TEXT NOT NULL,
+            content TEXT,
+            tags TEXT
+        );
+    ''')
     conn.commit()
     conn.close()
 

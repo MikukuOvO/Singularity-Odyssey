@@ -158,3 +158,18 @@ def get_talk(content):
         return action(content)
     else:
         return talk(content)
+
+
+def get_summary(events):
+    # Generate a summary from the list of events
+    response = client.chat.completions.create(
+        model="glm-4",  # Fill in the model name you need to call
+        messages=[
+            {"role": "system",
+             "content": "你是一个日历助手，你的任务是生成分离的单独的关键实质性名次，如时间的名称和地点，以及人物，不需要包括那些笼统的词，比如“地方”、“具体时间”，用逗号隔开，包括用户提供的所有事件的主要内容"},
+            {"role": "user", "content": f"这些是我的事件: {json.dumps(events)}"},
+        ],
+    )
+
+    summary = response.choices[0].message.content
+    return summary
