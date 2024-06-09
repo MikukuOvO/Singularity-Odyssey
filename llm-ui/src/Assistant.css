@@ -1,0 +1,247 @@
+body {
+    margin: 0;
+    font-family: 'Arial', serif; /* 默认字体 */
+    background-color: #1C0C2B; /* 深紫色背景 */
+    color: #FFFFFF; /* 白色文字 */
+  }
+  
+  /* 应用的基本布局 */
+  .Assistant {
+    display: flex;
+    height: 100vh; /* 使用视口高度，让应用充满整个屏幕 */
+  }
+  
+  .left-pane {
+    width: 40%;
+    background-color: #1B2B5A; /* 深蓝色背景 */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid #A369F0; /* 浅紫色边框 */
+    border-radius: 10px; /* 圆角边框 */
+    margin: 10px; /* 留出边距 */
+  }
+  
+  .back-button button {
+    margin-bottom: 20px;
+  }
+  .options button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #A369F0; /* 浅紫色背景 */
+    color: #FFFFFF; /* 白色文字 */
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+    font-family: 'Arial', serif; /* 统一使用 Arial 字体 */
+  }
+  
+  .options-container {
+    display: flex;
+    justify-content: center; /* 居中对齐 */
+    margin-bottom: 20px;
+    margin-top: 20px; /* 向下移动 */
+    padding: 5px;
+  }
+  
+  .option {
+    flex: 0 1 auto; /* 不允许伸展 */
+    width: 120px; /* 设置固定宽度，使其变短 */
+    padding: 10px 15px; /* 减小内边距 */
+    margin: 0 5px; /* 调整间距 */
+    background: linear-gradient(145deg, #6b23b3, #8e3af3); /* 渐变背景 */
+    color: #FFFFFF; /* 白色文字 */
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px; /* 调整圆角半径 */
+    font-family: 'Arial', serif; /* 统一使用 Arial 字体 */
+    transition: background 0.3s ease, transform 0.2s ease;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+  }
+  
+  .option:hover {
+    background: linear-gradient(145deg, #8e3af3, #6b23b3); /* 鼠标悬停时的渐变背景 */
+    transform: scale(1.05); /* 悬停时放大 */
+  }
+  
+  .option.active {
+    background: linear-gradient(145deg, #5a1e8a, #7a29c9); /* 选中时的渐变背景 */
+  }
+  
+  .option:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5); /* 聚焦时的边框 */
+  }
+  
+  
+
+  .back-button button:hover,
+  .options button:hover {
+    background-color: #5A82C5; /* 鼠标悬停时浅蓝色背景 */
+  }
+  
+  .right-pane {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    overflow: auto; /* 如果内容过多，允许滚动 */
+    background-color: #1B2B5A; /* 深蓝色背景 */
+    font-family: 'Georgia', serif; /* 统一使用 Georgia 字体 */
+    border: 2px solid #A369F0; /* 浅紫色边框 */
+    border-radius: 10px; /* 圆角边框 */
+    margin: 10px; /* 左右部分之间留出间隙 */
+  }
+  
+
+  
+  .message {
+    margin: 5px;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 60%;
+    display: flex;
+  }
+  
+  .message.user {
+    background-color: #2A125A; /* 中紫色背景 */
+    color: #FFFFFF; /* 白色文字 */
+    margin-left: auto;
+    border-top-right-radius: 0;
+    border-left: 5px solid #A369F0; /* 浅紫色高亮条 */
+  }
+  
+  .message.bot {
+    background-color: #2A125A; /* 中紫色背景 */
+    color: #FFFFFF; /* 白色文字 */
+    margin-right: auto;
+    border-top-left-radius: 0;
+    border-left: 5px solid #A369F0; /* 浅紫色高亮条 */
+  }
+  
+  
+  .input-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #2A125A; /* 中紫色背景 */
+    border: 2px solid #A369F0; /* 浅紫色边框 */
+    border-radius: 10px; /* 圆角边框 */
+    margin-top: 10px; /* 留出间隙 */
+  }
+  
+  input[type="text"] {
+    flex: 1;
+    margin-right: 10px;
+    padding: 10px;
+    background-color: #2A125A; /* 中紫色背景 */
+    border: 2px solid #A369F0; /* 浅紫色边框 */
+    color: #FFFFFF; /* 白色文字 */
+    border-radius: 10px; /* 圆角边框 */
+    font-family: 'Arial', serif; /* 统一使用 Arial 字体 */
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #A369F0; /* 浅紫色背景 */
+    color: #FFFFFF; /* 白色文字 */
+    cursor: pointer;
+    font-weight: bold; /* 加粗文本，增加视觉重量 */
+    border-radius: 10px; /* 圆角边框 */
+    font-family: 'Arial', serif; /* 统一使用 Arial 字体 */
+    width: 20%;
+  }
+  
+  button:hover {
+    background-color: #5A82C5; /* 鼠标悬停时浅蓝色背景 */
+  }
+  
+  /* 修饰滚动条 */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #1C0C2B; /* 滚动条背景 */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #A369F0; /* 浅紫色滚动条 */
+    border-radius: 10px; /* 圆角滚动条 */
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #5A82C5; /* 鼠标悬停时浅蓝色滚动条 */
+  }
+
+  @keyframes move-logo {
+    from {
+      transform: translateX(0) scale(1.2); /* 初始大小为1.2倍 */
+    }
+    to {
+      transform: translateX(calc(-50vw + 60px)) scale(1.5); /* 调整目标位置和大小 */
+    }
+  }
+  
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* 初始状态下将 logo 放置在右边 */
+    padding: 20px;
+    background: linear-gradient(to right, #0f0c29, #302b63, #24243e); /* 使用渐变背景 */
+    background-size: cover; /* 背景图片覆盖整个容器 */
+    font-family: 'Georgia', serif; /* 统一使用 Georgia 字体 */
+    border: 2px solid #A369F0; /* 浅紫色边框 */
+    border-radius: 10px; /* 圆角边框 */
+    position: relative;
+    overflow: hidden; /* 确保动画在容器内 */
+    width: 95%; /* 将头部宽度设置为 50% */
+    margin: 0 auto; /* 居中对齐 */
+  }
+
+  .logo {
+    height: 60px; /* 初始高度设置为60px */
+    cursor: pointer;
+  }
+  
+  .logo-animate {
+    animation: move-logo 1s forwards; /* 动画时间为2秒 */
+  }
+
+  .questions-container {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .questions-container h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #FFFFFF; /* 白色文字 */
+  }
+  
+  .questions-container ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .question {
+    background-color: #2A437F; /* 问题背景颜色 */
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 15px;
+    color: #FFFFFF; /* 白色文字 */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .question:hover {
+    background-color: #3E65A7; /* 鼠标悬停时的背景颜色 */
+  }
+  

@@ -1,110 +1,216 @@
 body {
   margin: 0;
-  font-family: 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif;
-  background-color: #1a1a1a;
-  color: #d4af37;
+  font-family: 'Arial', serif; /* 默认字体 */
+  background-color: #1C0C2B; /* 深紫色背景 */
+  color: #FFFFFF; /* 白色文字 */
 }
 
+/* 应用的基本布局 */
 .App {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100vh; /* 使用视口高度，让应用充满整个屏幕 */
 }
 
-.App-header {
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* 初始状态下将 logo 放置在右边 */
   padding: 20px;
-  background-color: #222;
-  font-family: 'Georgia', serif;
+  background: linear-gradient(to right, #0f0c29, #302b63, #24243e); /* 使用渐变背景 */
+  background-size: cover; /* 背景图片覆盖整个容器 */
+  font-family: 'Georgia', serif; /* 统一使用 Georgia 字体 */
+  border: 2px solid #A369F0; /* 浅紫色边框 */
+  border-radius: 10px; /* 圆角边框 */
+  position: relative;
+  overflow: hidden; /* 确保动画在容器内 */
+  width: 95%; /* 将头部宽度设置为 50% */
+  margin: 0 auto; /* 居中对齐 */
+}
+
+@keyframes move-logo {
+  from {
+    transform: translateX(0) scale(1.2); /* 初始大小为1.2倍 */
+  }
+  to {
+    transform: translateX(calc(-50vw + 60px)) scale(1.5); /* 调整目标位置和大小 */
+  }
+}
+
+.logo {
+  height: 60px; /* 初始高度设置为60px */
+  cursor: pointer;
+}
+
+.logo-animate {
+  animation: move-logo 1s forwards; /* 动画时间为2秒 */
+}
+
+.back-button {
+  margin-top: -10px;
+  width: 50%;
+  text-align: center;
+}
+
+.content {
+  display: flex;
+  flex: 1; /* 使内容区充满剩余空间 */
+}
+
+.left-half, .right-half {
+  flex: 1; /* 左右分开，每部分占一半宽度 */
+  padding: 20px;
+  overflow: auto; /* 如果内容过多，允许滚动 */
+  background-color: #1B2B5A; /* 深蓝色背景 */
+  font-family: 'Georgia', serif; /* 统一使用 Georgia 字体 */
+  border: 2px solid #A369F0; /* 浅紫色边框 */
+  border-radius: 10px; /* 圆角边框 */
+  margin: 10px; /* 左右部分之间留出间隙 */
 }
 
 .Back-button {
-  padding: 20px;
-  background-color: #222;
-  font-family: 'Georgia', serif;
+  margin-top: -10px;
+  text-align: center;
+  width: 100%; /* 使 Back-button 宽度填充整个父容器 */
+}
+
+.Back-button button {
+  width: 100%; /* 按钮填充整个父容器的宽度 */
+  padding: 10px 20px;
+  background-color: #A369F0; /* 白色背景 */
+  border: none;
+  color: #1C0C2B; /* 深紫色文字 */
+  cursor: pointer;
+  font-weight: bold;
+  font-family: 'Arial', serif; /* 统一使用 Arial 字体 */
+  border-radius: 10px; /* 圆角边框 */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 添加阴影使按钮更明显 */
+}
+
+.Back-button button:hover {
+  background-color: #5A82C5;; /* 鼠标悬停时浅紫色背景 */
+  color: #FFFFFF; /* 悬停时文字颜色变为白色 */
+}
+
+/* 日历和事件列表项样式 */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #2A437F; /* 中蓝色背景 */
+  border-left: 5px solid #A369F0; /* 浅紫色高亮条 */
+  border-radius: 10px; /* 圆角边框 */
+  font-family: 'Georgia', serif; /* 统一使用 Georgia 字体 */
 }
 
 .chat-container {
   flex: 1;
   padding: 20px;
   overflow-y: auto;
-  background-color: #333;
+  background-color: #1C0C2B; /* 深紫色文字 */
+  border: 2px solid #A369F0; /* 浅紫色边框 */
+  border-radius: 10px; /* 圆角边框 */
 }
 
-.message {
-  margin: 5px;
+li:hover {
+  background-color: #3E65A7; /* 鼠标悬停时浅蓝色背景 */
+}
+
+li.more-option {
+  cursor: pointer;
+  color: #A369F0; /* 浅紫色 */
+}
+
+li.more-option:hover {
+  color: #5A82C5; /* 鼠标悬停时浅蓝色 */
+}
+
+/* 输入框和按钮样式 */
+input[type="text"], textarea, button {
+  width: 100%;
   padding: 10px;
-  border-radius: 10px;
-  max-width: 60%;
-  display: flex;
-}
-
-.message.user {
-  background-color: #444;
-  color: #d4af37;
-  margin-left: auto;
-  border-top-right-radius: 0;
-  border-left: 5px solid #d4af37;
-}
-
-.message.bot {
-  background-color: #444;
-  color: #d4af37;
-  margin-right: auto;
-  border-top-left-radius: 0;
-  border-left: 5px solid #d4af37;
-}
-
-.input-container {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
-  background-color: #333;
-}
-
-input[type="text"] {
-  flex: 1;
-  margin-right: 10px;
-  padding: 10px;
-  background-color: #333;
-  border: 1px solid #d4af37;
-  color: #d4af37;
+  margin-top: 10px;
+  background-color: #2A125A; /* 中紫色背景 */
+  border: 2px solid #A369F0; /* 浅紫色边框 */
+  color: #FFFFFF; /* 白色文字 */
+  border-radius: 10px; /* 圆角边框 */
+  font-family: 'Arial', serif; /* 统一使用 Arial 字体 */
 }
 
 button {
-  padding: 10px 20px;
-  background-color: #d4af37;
-  color: #1a1a1a;
+  background-color: #A369F0; /* 浅紫色背景 */
   cursor: pointer;
-  font-weight: bold;
+  font-weight: bold; /* 加粗文本，增加视觉重量 */
+  border-radius: 10px; /* 圆角边框 */
+  font-family: 'Arial', serif; /* 统一使用 Arial 字体 */
 }
 
 button:hover {
-  background-color: #e6b800;
+  background-color: #5A82C5; /* 鼠标悬停时浅蓝色背景 */
 }
 
+/* 修饰滚动条 */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #333;
+  background: #1C0C2B; /* 滚动条背景 */
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #d4af37;
+  background: #A369F0; /* 浅紫色滚动条 */
+  border-radius: 10px; /* 圆角滚动条 */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #e6b800;
+  background: #5A82C5; /* 鼠标悬停时浅蓝色滚动条 */
 }
 
-/* 新增的样式 */
-.location-message {
+/* 词云容器样式 */
+.wordcloud-container {
+  margin-top: -20px; /* 向上移动词云 */
+  padding: 20px;
+  background-color: #1B2B5A; /* 深蓝色背景 */
+  border-radius: 10px; /* 圆角边框 */
+}
+
+/* 新增的 alert 样式 */
+.alert {
   position: fixed;
   top: 20px;
   right: 20px;
-  background-color: #444;
-  color: #d4af37;
-  padding: 10px;
-  border-radius: 5px;
+  padding: 10px 20px;
+  background-color: #A369F0; /* 浅紫色背景 */
+  color: #FFFFFF; /* 白色文字 */
+  border-radius: 10px; /* 圆角边框 */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+  z-index: 1000;
+}
+
+/* 新增的 toggle-button 样式 */
+.toggle-button-container {
+  position: absolute;
+  top: -10px;
+  right: 10px;
+}
+
+.toggle-button {
+  padding: 5px 15px;
+  background-color: #A369F0; /* 浅紫色背景 */
+  color: #FFFFFF;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.toggle-button:hover {
+  background-color: #0056b3;
 }

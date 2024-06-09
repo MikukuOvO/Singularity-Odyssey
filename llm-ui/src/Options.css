@@ -1,0 +1,38 @@
+.options-container {
+  display: flex;
+  justify-content: center; /* 居中对齐 */
+  margin-bottom: 20px;
+  margin-top: 20px; /* 向下移动 */
+  padding: 5px;
+}
+
+.option {
+  flex: 0 1 auto; /* 不允许伸展 */
+  width: 120px; /* 设置固定宽度，使其变短 */
+  padding: 10px 15px; /* 减小内边距 */
+  margin: 0 5px; /* 调整间距 */
+  background: linear-gradient(145deg, #6b23b3, #8e3af3); /* 渐变背景 */
+  color: #FFFFFF; /* 白色文字 */
+  cursor: pointer;
+  font-weight: bold;
+  border: none;
+  border-radius: 30px; /* 调整圆角半径 */
+  font-family: 'Arial', serif; /* 统一使用 Arial 字体 */
+  transition: background 0.3s ease, transform 0.2s ease;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+}
+
+.option:hover {
+  background: linear-gradient(145deg, #8e3af3, #6b23b3); /* 鼠标悬停时的渐变背景 */
+  transform: scale(1.05); /* 悬停时放大 */
+}
+
+.option.active {
+  background: linear-gradient(145deg, #5a1e8a, #7a29c9); /* 选中时的渐变背景 */
+}
+
+.option:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5); /* 聚焦时的边框 */
+}

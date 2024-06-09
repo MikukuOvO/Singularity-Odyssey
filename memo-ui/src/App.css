@@ -15,25 +15,42 @@ body {
 .header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end; /* 初始状态下将 logo 放置在右边 */
   padding: 20px;
-  background-color: #2A125A; /* 中紫色背景 */
+  background: linear-gradient(to right, #0f0c29, #302b63, #24243e); /* 使用渐变背景 */
+  background-size: cover; /* 背景图片覆盖整个容器 */
   font-family: 'Georgia', serif; /* 统一使用 Georgia 字体 */
   border: 2px solid #A369F0; /* 浅紫色边框 */
   border-radius: 10px; /* 圆角边框 */
   position: relative;
+  overflow: hidden; /* 确保动画在容器内 */
+  width: 95%; /* 将头部宽度设置为 50% */
+  margin: 0 auto; /* 居中对齐 */
+}
+
+@keyframes move-logo {
+  from {
+    transform: translateX(0) scale(1.2); /* 初始大小为1.2倍 */
+  }
+  to {
+    transform: translateX(calc(-50vw + 60px)) scale(1.5); /* 调整目标位置和大小 */
+  }
 }
 
 .logo {
-  height: 40px;
-  margin-left: 47.80%;
+  height: 60px; /* 初始高度设置为60px */
+  cursor: pointer;
+}
+
+.logo-animate {
+  animation: move-logo 1s forwards; /* 动画时间为2秒 */
 }
 
 .back-button {
   margin-top: -10px;
   width: 50%;
   text-align: center;
-} 
+}
 
 .content {
   display: flex;

@@ -58,7 +58,7 @@ def checkifactions(content):
     print(choice)
     return choice
 
-def talk(content):
+def get_talk(content):
     response = client.chat.completions.create(
         model="glm-4",  # 填写需要调用的模型名称
         messages=[
@@ -66,11 +66,15 @@ def talk(content):
              "content": "请活泼的跟用户进行聊天"},
             {"role": "user", "content": content}
         ],
+        stream=True
     )
 
-    print(response.choices[0].message)
-    msg = response.choices[0].message.content
-    return msg
+    msg = ""
+    for chunk in response:
+        delta = chunk.choices[0].delta
+        msg += delta.content
+        yield delta.content  # 每次生成累积的内容
+        print(delta.content, end='', flush=True)
 
 # 解析用户输入的自然语言，获取事件的时间和名称
 def get_event_details_from_model(user_input):
@@ -138,38 +142,29 @@ def get_event_details_from_model(user_input):
 
     return name, time_range, destination
 
-def action(content):
-
-    # 示例：处理用户输入
-    # user_input = input("Please enter your event details: ")
-    user_input = content
-    event_name, time_range, destination = get_event_details_from_model(user_input)
-    start_time_str, end_time_str = time_range.split('~')
-    start_time = datetime.strptime(start_time_str, '%Y-%m-%d %H:%M')
-    end_time = datetime.strptime(end_time_str, '%H:%M').time()
-    end_time = datetime.combine(start_time.date(), end_time)
-
-    # 添加事件到数据库
-    add_event(event_name, start_time.isoformat(), end_time.isoformat(), destination)
-    return "Add Events Successfully!"
-
-def get_talk(content):
-    if checkifactions(content) == '0':
-        return action(content)
-    else:
-        return talk(content)
-
-
 def get_summary(events):
     # Generate a summary from the list of events
     response = client.chat.completions.create(
         model="glm-4",  # Fill in the model name you need to call
         messages=[
             {"role": "system",
-             "content": "你是一个日历助手，你的任务是生成分离的单独的关键实质性名次，如时间的名称和地点，以及人物，不需要包括那些笼统的词，比如“地方”、“具体时间”，用逗号隔开，包括用户提供的所有事件的主要内容"},
+             "content": "你是一个日历助手，你的任务是生成分离的单独的关键实质性名词，如时间的名称和地点，以及人物，不需要包括那些笼统的词，比如“地方”、“具体时间”，用逗号隔开，包括用户提供的所有事件的主要内容"},
             {"role": "user", "content": f"这些是我的事件: {json.dumps(events)}"},
         ],
     )
 
     summary = response.choices[0].message.content
     return summary
+
+def generate_questions():
+    response = client.chat.completions.create(
+        model="glm-4",  # Replace with the appropriate model name
+        messages=[
+            {"role": "system",
+             "content": "你是一个帮助用户生成问题的助手。请生成三个用户可能会问的问题，用于一个聊天机器人，问题与问题之间用\n隔开，请不要加入前缀序号或者其它无关的符号"},
+            {"role": "user", "content": "请生成一些用户可能会问的问题。"},
+            {"role": "assistant", "content": "你能推荐一些提高英语听力的方法吗？\n最近有什么热门的电影推荐吗？\n如何在手机上设置自动回复短信？"},
+        ],
+    )
+    questions = response.choices[0].message.content.split('\n')
+    return [q.strip() for q in questions if q.strip()]

@@ -3,27 +3,36 @@
     <div class="modal-content">
       <span class="close-button" @click="close">&times;</span>
       <h2>Edit Event Details</h2>
-
-      <label for="title">Title:</label>
-      <input id="title" type="text" v-model="editableEvent.title" placeholder="Event title">
-
-      <label for="startDate">Start Date:</label>
-      <input id="startDate" type="date" v-model="editableEvent.startDate" placeholder="Start date">
-
-      <label for="startTime">Start Time:</label>
-      <input id="startTime" type="time" v-model="editableEvent.startTime" placeholder="Start time" step="60">
-
-      <label for="endDate">End Date:</label>
-      <input id="endDate" type="date" v-model="editableEvent.endDate" placeholder="End date">
-
-      <label for="endTime">End Time:</label>
-      <input id="endTime" type="time" v-model="editableEvent.endTime" placeholder="End time" step="60">
-
-      <label for="destination">Destination:</label>
-      <input id="destination" type="text" v-model="editableEvent.destination" placeholder="Destination">
-
-      <button @click="submit">Save Changes</button>
-      <button class="delete-button" @click="deleteEvent">Delete Event</button>
+      <form class="form-container">
+        <div class="form-group">
+          <label for="title">Title:</label>
+          <input id="title" type="text" v-model="editableEvent.title" placeholder="Event title">
+        </div>
+        <div class="form-group">
+          <label for="startDate">Start Date:</label>
+          <input id="startDate" type="date" v-model="editableEvent.startDate" placeholder="Start date">
+        </div>
+        <div class="form-group">
+          <label for="startTime">Start Time:</label>
+          <input id="startTime" type="time" v-model="editableEvent.startTime" placeholder="Start time" step="60">
+        </div>
+        <div class="form-group">
+          <label for="endDate">End Date:</label>
+          <input id="endDate" type="date" v-model="editableEvent.endDate" placeholder="End date">
+        </div>
+        <div class="form-group">
+          <label for="endTime">End Time:</label>
+          <input id="endTime" type="time" v-model="editableEvent.endTime" placeholder="End time" step="60">
+        </div>
+        <div class="form-group">
+          <label for="destination">Destination:</label>
+          <input id="destination" type="text" v-model="editableEvent.destination" placeholder="Destination">
+        </div>
+        <div class="form-group actions">
+          <button type="button" @click="submit">Save Changes</button>
+          <button type="button" class="delete-button" @click="deleteEvent">Delete Event</button>
+        </div>
+      </form>
     </div>
   </div>
 </template>
@@ -41,7 +50,6 @@ export default {
   },
   methods: {
     initializeEditableEvent() {
-      // Split the date and time
       this.editableEvent = {
         ...this.event,
         startDate: this.formatDate(this.event.start),
@@ -52,15 +60,12 @@ export default {
     },
     formatDate(dateStr) {
       const date = new Date(dateStr);
-      console.log(date)
-      return date.toISOString().split('T')[0];  // Correctly splits at 'T', taking the date part
+      return date.toISOString().split('T')[0];
     },
     formatTime(dateStr) {
       const date = new Date(dateStr);
-      // Format to HH:mm based on local time
-      const hours = date.getHours().toString().padStart(2, '0'); // Ensures two digits
-      const minutes = date.getMinutes().toString().padStart(2, '0'); // Ensures two digits
-      console.log(`${hours}:${minutes}`);  // Log to ensure the correctness
+      const hours = date.getHours().toString().padStart(2, '0');
+      const minutes = date.getMinutes().toString().padStart(2, '0');
       return `${hours}:${minutes}`;
     },
     close() {
@@ -100,64 +105,83 @@ export default {
 }
 
 .modal-content {
-  background: #000; /* Black background */
-  color: #fff; /* White text */
+  background: #1C0C2B;
+  color: #FFFFFF;
   padding: 20px;
-  border-radius: 5px;
-  text-align: center;
+  border-radius: 20px; /* 更明显的圆角 */
+  width: 500px;
 }
 
-input[type="text"], input[type="date"] {
-  width: 90%;
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  flex: 0 30%;
+  text-align: right;
+  margin-right: 10px;
+}
+
+input[type="text"], input[type="date"], input[type="time"] {
+  flex: 1;
   padding: 8px;
-  margin-top: 10px;
-  background: #333; /* Dark background for inputs */
-  color: #fff; /* Light text */
-  border: none;
-  border-radius: 4px;
+  background: #2A125A;
+  color: #FFFFFF;
+  border: 2px solid #A369F0;
+  border-radius: 15px; /* 圆角矩形风格 */
 }
 
-button {
+button, .delete-button {
   padding: 10px 20px;
   border: none;
-  border-radius: 5px;
-  background-color: #ffd700; /* Gold background */
-  color: #000; /* Black text */
+  border-radius: 15px; /* 圆角矩形风格 */
+  background-color: #A369F0;
+  color: #FFFFFF;
   cursor: pointer;
-  font-weight: bold; /* Bold text */
-  transition: background-color 0.3s; /* Smooth background color transition */
-  margin-top: 20px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  width: 100%;
 }
 
-button:hover {
-  background-color: #e6c300; /* Darker gold when hovered */
+button:hover, .delete-button:hover {
+  background-color: #5A82C5;
 }
 
 .close-button {
-  color: #fff; /* White color */
+  color: #FFFFFF;
   float: right;
   font-size: 28px;
   font-weight: bold;
   cursor: pointer;
 }
 
-.close-button:hover,
-.close-button:focus {
-  color: #e6c300; /* Gold color on hover/focus */
+.close-button:hover {
+  color: #A369F0;
 }
+
 .delete-button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  background-color: #ff6347; /* Tomato red background for delete button */
-  color: #fff; /* White text */
-  cursor: pointer;
-  font-weight: bold; /* Bold text */
-  transition: background-color 0.3s; /* Smooth background color transition */
-  margin-top: 10px;
+  background-color: #FF6347;
 }
 
 .delete-button:hover {
-  background-color: #e52f1b; /* Darker red when hovered */
+  background-color: #E52F1B;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
 }
 </style>

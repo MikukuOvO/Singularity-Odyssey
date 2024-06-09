@@ -1,0 +1,57 @@
+.icon-circle-container {
+  position: relative;
+  width: 50vw; /* 使用视口宽度 */
+  height: 50vw; /* 使用视口宽度保持比例 */
+  max-width: 300px;
+  max-height: 300px;
+  margin: auto;
+}
+
+.orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80%; /* 增大轨道的宽度 */
+  height: 80%; /* 增大轨道的高度 */
+  transform: translate(-50%, -50%);
+  border: 2px dashed #FFFFFF; /* 轨道样式 */
+  border-radius: 50%;
+  animation: rotateOrbit 10s linear infinite; /* 添加旋转动画 */
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(calc(360deg / var(--total) * var(--i))) translate(245%) rotate(calc(-360deg / var(--total) * var(--i))); /* 增大平移距离 */
+  width: 10vw; /* 使用视口宽度设置图标大小 */
+  height: 10vw; /* 使用视口宽度设置图标大小 */
+  max-width: 50px;
+  max-height: 50px;
+}
+
+.center-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20vw; /* 使用视口宽度设置中心图标大小 */
+    height: 20vw; /* 使用视口宽度设置中心图标大小 */
+    max-width: 100px;
+    max-height: 100px;
+  }
+  
+  .center-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+@keyframes rotateOrbit {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}

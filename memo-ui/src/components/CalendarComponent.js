@@ -39,7 +39,7 @@ const CalendarComponent = () => {
           onClick={() => setShowMore(!showMore)}
           className="toggle-button"
         >
-          {showMore ? '收起' : '显示更多'}
+          {showMore ? 'Fold' : 'More'}
         </button>
       </div>
       <ul>
@@ -52,7 +52,7 @@ const CalendarComponent = () => {
           </li>
         ))}
       </ul>
-      <h3>今日摘要</h3>
+      <h3>Abstract</h3>
       {summary && (
         <div className="wordcloud-container">
           <WordCloud words={words} options={options} />

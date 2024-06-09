@@ -1,11 +1,11 @@
 import time
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, Response
 from flask_cors import CORS
 from datetime import datetime
 import logging
 import uuid  # 用于生成唯一ID
 import sqlite3
-from ai import action, get_talk, get_summary
+from ai import get_talk, get_summary, generate_questions
 
 app = Flask(__name__)
 app.logger.setLevel(logging.DEBUG)  # 设置日志级别为 DEBUG
@@ -110,20 +110,16 @@ def handle_memo(memo_id):
         conn.close()
         return jsonify(dict(memo))
 
-@app.route('/api/interact', methods=['POST'])
-def handle_interactions():
-    data = request.json
-    content = data['content']
-    action(content)
-    response = "AI interaction received!"
-    return jsonify({'response': response}), 200
-
 @app.route('/api/predict', methods=['POST'])
 def predict():
     data = request.json
     user_input = data['input']
-    prediction = get_talk(user_input)
-    return jsonify({'prediction': prediction})
+    
+    def generate():
+        for partial_msg in get_talk(user_input):
+            yield partial_msg  # 直接返回内容
+
+    return Response(generate(), content_type='text/plain')
 
 @app.route('/api/todayevents', methods=['GET'])
 def get_today_events():
@@ -157,5 +153,10 @@ def get_ip():
     client_ip = request.remote_addr
     return {'ip': client_ip}
 
+@app.route('/api/generate_questions', methods=['GET'])
+def generate_questions_endpoint():
+    questions = generate_questions()
+    return jsonify(questions)
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)

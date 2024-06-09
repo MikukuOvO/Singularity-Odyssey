@@ -2,9 +2,8 @@
   <div class="modal">
     <div class="modal-content">
       <span class="close-button" @click="close">&times;</span>
-      <h2>Enter Event Details</h2>
-      <input type="text" v-model="eventTitle" placeholder="Event title">
-      <input type="text" v-model="destination" placeholder="Destination">
+      <h2>Say to AI</h2>
+      <textarea v-model="content" placeholder="Enter your message here"></textarea>
       <button @click="submit">Submit</button>
     </div>
   </div>
@@ -14,8 +13,7 @@
 export default {
   data() {
     return {
-      eventTitle: '',
-      destination: '',  // 新增数据属性
+      content: '',
     };
   },
   methods: {
@@ -23,9 +21,8 @@ export default {
       this.$emit('close');
     },
     submit() {
-      this.$emit('submit', { title: this.eventTitle, destination: this.destination });
-      this.eventTitle = '';
-      this.destination = ''; // 重置输入
+      this.$emit('submit', this.content);
+      this.content = '';
     },
   },
 };
@@ -54,7 +51,7 @@ export default {
   width: 400px; /* 定义宽度以适应内容 */
 }
 
-input[type="text"] {
+textarea {
   width: 90%; /* 宽度调整 */
   padding: 10px;
   margin: 10px 0;
@@ -62,6 +59,8 @@ input[type="text"] {
   border-radius: 10px; /* 圆角设计 */
   background: #2A125A; /* 输入框使用略浅的深紫色背景 */
   color: #FFFFFF; /* 输入框内文字为白色 */
+  resize: vertical; /* 允许垂直拖动 */
+  min-height: 100px; /* 最小高度 */
 }
 
 button {
