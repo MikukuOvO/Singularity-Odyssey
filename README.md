@@ -1,35 +1,51 @@
 # Singularity Odyssey
 ## Introduction
-An intelligent planning assistant.
+The project "Singularity Odyssey" is an integrated application that combines calendar, natural language processing,
+intelligent recommender, and personal memo functionalities.
 
-## Logo
-> Designer: Shouju Wang
-<img src="logo.png" alt="logo" style="zoom: 33%;" />
-
-## Objective
-- Ability to interact with natural language.
-- Automatically detects event conflicts
-- Intelligent recommendation system
-- NASA Astronomy style automatic push & update
-
-## Update
-> Update on 2024.3.25: Add files & front & back interact
-
-## Run
-### Front end
-```
-cd frontend
-npm install
-npm run dev
-```
-### Back end
-```
-cd backend
-flask run
-```
+Inspired by astronomical phenomena and literary philosophical concepts, it aims to enhance the quality of life for users,
+promoting personal growth and social connection through the power of technology.
 
 ## Requirements
 ```
-Flask==3.0.2
-Flask-Cors==4.0.0
+Node.js
+flask
+```
+
+## Build
+Our project is based on several submodules, which need to be run separately.
+### Main Page
+```
+cd frontend
+npm install
+npm start
+```
+### Calendar
+```
+cd calendar-ui
+npm install
+npm run dev
+```
+### Chat & Recommed Bot
+```
+cd llm-ui
+npm install
+npm start
+```
+### Memo
+```
+cd memo-ui
+npm install
+npm start
+```
+### backend
+```
+cd backend
+python app.py
+```
+
+## Run
+After built the project, you can also run it automically.
+```
+./run.sh
 ```
