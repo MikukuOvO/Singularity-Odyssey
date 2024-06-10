@@ -106,7 +106,7 @@ def get_event_details_from_model(user_input):
         model="glm-4",  # 填写需要调用的模型名称
         messages=[
             {"role": "system",
-             "content": "你是一个日历助手的组件，你的任务是通过用户的自然语言来分析推断用户期望的事件名称"},
+             "content": "你是一个日历助手的组件，你的任务是通过用户的自然语言来分析推断用户期望的事件名称，请尽量简洁一些"},
             {"role": "system", "content": "你的返回中不要带有任何和时间和事件的地点相关的内容，如果去掉后句子不通顺，请根据你的理解补全，去掉标点符号"},
             {"role": "user", "content": "今天晚上8点和同学一起吃饭"},
             {"role": "assistant", "content": "和同学一起吃饭"},
@@ -148,7 +148,11 @@ def get_summary(events):
         model="glm-4",  # Fill in the model name you need to call
         messages=[
             {"role": "system",
-             "content": "你是一个日历助手，你的任务是生成分离的单独的关键实质性名词，如时间的名称和地点，以及人物，不需要包括那些笼统的词，比如“地方”、“具体时间”，用逗号隔开，包括用户提供的所有事件的主要内容"},
+             "content": "你是一个分词助手，你的任务是生成分离的单独的关键实质性词语，如事件的名称和地点，以及人物，用空格隔开"},
+             {"role": "system",
+             "content": "每个词语尽可能短，同时你不要说其它的话"},
+             {"role": "user", "content": "请返回一个例子"},
+             {"role": "assistant", "content": "吃饭 唱歌 跳舞"},
             {"role": "user", "content": f"这些是我的事件: {json.dumps(events)}"},
         ],
     )
@@ -168,3 +172,18 @@ def generate_questions():
     )
     questions = response.choices[0].message.content.split('\n')
     return [q.strip() for q in questions if q.strip()]
+
+def action(content):
+
+    # 示例：处理用户输入
+    # user_input = input("Please enter your event details: ")
+    user_input = content
+    event_name, time_range, destination = get_event_details_from_model(user_input)
+    start_time_str, end_time_str = time_range.split('~')
+    start_time = datetime.strptime(start_time_str, '%Y-%m-%d %H:%M')
+    end_time = datetime.strptime(end_time_str, '%H:%M').time()
+    end_time = datetime.combine(start_time.date(), end_time)
+
+    # 添加事件到数据库
+    add_event(event_name, start_time.isoformat(), end_time.isoformat(), destination)
+    return "Add Events Successfully!"
