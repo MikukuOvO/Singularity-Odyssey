@@ -12,7 +12,7 @@ function App() {
   const handleLogoClick = () => {
     setIsAnimating(true);
     setTimeout(() => {
-      window.location.href = 'http://192.168.0.136:3000';
+      window.location.href = 'http://localhost:3000';
     }, 1000); // 动画时间 3 秒后跳转
   };
 

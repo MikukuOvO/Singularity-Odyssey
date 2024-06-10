@@ -42,7 +42,7 @@
         :options='calendarOptions'
       >
         <template v-slot:eventContent="arg">
-          <div class="calendar-event-content fc-event fc-event-main">
+          <div class="calendar-event-content fc-event">
             <span class="calendar-event-time">{{ arg.timeText }}</span>
             <span class="calendar-event-title">{{ arg.event.title }}</span>
             <div class="calendar-event-destination">{{ arg.event.extendedProps.destination }}</div>
@@ -213,7 +213,7 @@ export default defineComponent({
         });
     },
     handleBack() {
-      window.location.href = 'http://192.168.0.136:3000';
+      window.location.href = 'http://localhost:3000';
     }
   }
 })

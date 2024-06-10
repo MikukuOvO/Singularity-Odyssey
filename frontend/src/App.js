@@ -31,9 +31,9 @@ const App = () => {
         <a href="#" className="logo">Singularity Odyssey</a>
         <ul>
           <li><a href="#" className="active">Home</a></li>
-          <li><a href="http://192.168.0.136:3002/calendar/">Calendar</a></li>
-          <li><a href="http://192.168.0.136:3003/llm">Assistant</a></li>
-          <li><a href="http://192.168.0.136:3001/memo">Memo</a></li>
+          <li><a href="http://localhost:3002/calendar/">Calendar</a></li>
+          <li><a href="http://localhost:3003/llm">Assistant</a></li>
+          <li><a href="http://localhost:3001/memo">Memo</a></li>
         </ul>
       </header>
       <section>
